@@ -1,0 +1,52 @@
+// @describe Grid horisontal
+
+// @it Grid height
+
+for $i in (2 4 6 8 18px 24px 30px 40px)
+    .block{$i}
+        height grid_height($i)
+
+// @expects
+.block2{height:12px}
+.block4{height:24px}
+.block6{height:36px}
+.block8{height:48px}
+.block18{height:18px}
+.block24{height:24px}
+.block30{height:30px}
+.block40{height:42px}
+
+
+// @it Grid offset vertical
+
+.block
+    grid-offset-v 10px
+    grid-offset-top 20px
+    grid-offset-bottom 30px
+
+// @expects
+.block{margin-top:12px;margin-bottom:12px;margin-top:24px;margin-bottom:30px}
+
+
+// @it Grid offset vertical inner
+
+.block
+    grid-offset-v(10px, is_in:true)
+    grid-offset-top(20px, is_in:true)
+    grid-offset-bottom(30px, is_in:true)
+
+// @expects
+.block{padding-top:12px;padding-bottom:12px;padding-top:24px;padding-bottom:30px}
+
+
+// @it Grid vertical border
+
+for $i in 1..3
+    .block{$i}
+        grid-offset-v 10px
+        grid-border-offset 1px, $i
+
+// @expects
+.block1{margin-top:12px;margin-bottom:12px;margin-top:11px}
+.block2{margin-top:12px;margin-bottom:12px;margin-bottom:11px}
+.block3{margin-top:12px;margin-bottom:12px;margin-top:11px;margin-bottom:11px}

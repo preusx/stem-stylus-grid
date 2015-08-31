@@ -1,0 +1,174 @@
+// @describe Grid horizontal
+
+// @it Grid center: Empty
+
+.block
+    grid-center()
+
+// @expects
+.block{display:block;margin-left:auto;margin-right:auto;padding-left:10px;padding-right:10px; width:auto}
+@media only screen and (min-width:48em){.block{width:740px}}
+@media only screen and (min-width:62em){.block{width:960px}}
+
+
+// @it Grid center: Width
+
+.block
+    grid-center(100px)
+
+// @expects
+.block{display:block;margin-left:auto;margin-right:auto;padding-left:10px;padding-right:10px;width:120px}
+
+
+// @it Grid center: String
+
+.block
+    grid-center('md')
+
+
+.block2
+    grid-center(('md'))
+
+// @expects
+.block{display:block;margin-left:auto;margin-right:auto;padding-left:10px;padding-right:10px}
+@media only screen and (min-width:62em){.block{width:960px}}
+
+.block2{display:block;margin-left:auto;margin-right:auto;padding-left:10px;padding-right:10px}
+@media only screen and (min-width:62em){.block2{width:960px}}
+
+
+// @it Grid center: Array
+
+.block
+    grid-center(('sm' 'md'))
+
+// @expects
+.block{display:block;margin-left:auto;margin-right:auto;padding-left:10px;padding-right:10px}
+@media only screen and (min-width:48em){.block{width:740px}}
+@media only screen and (min-width:62em){.block{width:960px}}
+
+
+// @it Grid center: Hash
+
+.block
+    grid-center({sm: 10px, md: 15px})
+
+// @expects
+.block{display:block;margin-left:auto;margin-right:auto;padding-left:10px;padding-right:10px}
+@media only screen and (min-width:48em){.block{width:30px}}
+@media only screen and (min-width:62em){.block{width:35px}}
+
+
+// @it Grid center: Boolean
+
+.block
+    grid-center(true)
+
+.block2
+    grid-center(false)
+
+// @expects
+.block{display:block;margin-left:auto;margin-right:auto;padding-left:10px;padding-right:10px; width:auto}
+@media only screen and (min-width:48em){.block{width:740px}}
+@media only screen and (min-width:62em){.block{width:960px}}
+
+.block2{display:block;margin-left:auto;margin-right:auto;padding-left:10px;padding-right:10px; width:960px}
+
+
+// @it Grid container
+
+.block
+    grid-container()
+
+// @expects
+.block{zoom:1}
+.block:after,.block:before{display:block;display:table;width:0;height:0;overflow:hidden;visibility:hidden;content:""}
+.block:after{clear:both}
+.block{display:block;padding-left:0;padding-right:0;margin-left:-20px;margin-right:-20px;list-style:none}
+
+
+// @it Grid columns: Integer
+
+.block
+    grid-columns(5)
+
+// @expects
+.block{display:block;min-height:1px;padding-left:10px;padding-right:10px}
+@media only screen and (min-width:62em){.block{float:left;width:41.66666%}}
+
+
+// @it Grid columns: Float
+
+.block
+    grid-columns(1/5)
+
+// @expects
+.block{display:block;min-height:1px;padding-left:10px;padding-right:10px}
+@media only screen and (min-width:62em){.block{float:left;width:20%}}
+
+
+// @it Grid columns: Other respond
+
+.block
+    grid-columns(1/5, 3, 5)
+
+// @expects
+.block{display:block;min-height:1px;padding-left:10px;padding-right:10px;float:left;width:41.66666%}
+@media only screen and (min-width:48em){.block{float:left;width:25%}}
+@media only screen and (min-width:62em){.block{float:left;width:20%}}
+
+
+// @it Grid columns: Hide on small
+
+.block
+    grid-columns(1/5, 0, 5)
+
+// @expects
+.block{display:block;min-height:1px;padding-left:10px;padding-right:10px;float:left;width:41.66666%}
+@media only screen and (min-width:48em){.block{display:none}}
+@media only screen and (min-width:62em){.block{float:left;width:20%}}
+
+
+// @it Grid columns: Custom breakpoints
+
+.block
+    grid-columns(1/5, 0, 5, sizes: {lg: 1/6})
+
+// @expects
+.block{display:block;min-height:1px;padding-left:10px;padding-right:10px;float:left;width:41.66666%}
+@media only screen and (min-width:76.5em){.block{float:left;width:16.66666%}}
+@media only screen and (min-width:48em){.block{display:none}}
+@media only screen and (min-width:62em){.block{float:left;width:20%}}
+
+
+// @it Grid offset: horisontal
+
+.block
+    grid-offset-h(1/5, 0, 5)
+
+// @expects
+.block{margin-left:41.66666%;margin-right:41.66666%}
+@media only screen and (min-width:48em){.block{margin-left:0;margin-right:0}}
+@media only screen and (min-width:62em){.block{margin-left:20%;margin-right:20%}}
+
+
+// @it Grid offset: left
+
+.block
+    grid-offset-left(1/5, 0, 5)
+
+// @expects
+.block{margin-left:41.66666%;}
+@media only screen and (min-width:48em){.block{margin-left:0;}}
+@media only screen and (min-width:62em){.block{margin-left:20%;}}
+
+
+// @it Grid offset: right
+
+.block
+    grid-offset-right(1/5, 0, 5)
+
+// @expects
+.block{margin-right:41.66666%;}
+@media only screen and (min-width:48em){.block{margin-right:0;}}
+@media only screen and (min-width:62em){.block{margin-right:20%;}}

@@ -1,0 +1,31 @@
+/**
+ * Variables
+ * ======================================================================== */
+
+block_storage('__stem__grid-settings', {
+        // Horisontal
+        columns:     12,
+        gutter:      20px,
+        error:       5,
+        container:   {
+                xs:  null,
+                sm:  720px,
+                md:  940px,
+            },
+        width:       940px,
+
+        // Vertical
+        baseline:    6px,
+
+        responsive:  true
+    }, true)
+
+
+/**
+ * Mixins
+ * ======================================================================== */
+
+grid-settings($data=false, $default=false, fallback=false)
+    $temp = block_storage('__stem__grid-settings', $data, $default, fallback)
+
+    return $temp
