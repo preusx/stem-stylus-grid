@@ -11,7 +11,7 @@ grid_direction()
 grid_columns($count)
     $grid = grid-settings()
 
-    if $count > 1
+    if $count >= 1
         $count = $count / $grid.columns
 
     return floor($count * 100%, $grid.error)
@@ -75,8 +75,8 @@ grid-container()
     display block
     padding-left 0
     padding-right 0
-    margin-left: -1 * $grid.gutter
-    margin-right: -1 * $grid.gutter
+    margin-left: -.5 * $grid.gutter
+    margin-right: -.5 * $grid.gutter
 
     list-style none
 
@@ -124,6 +124,7 @@ grid-columns($medium, $small=null, $xsmall=null, dir=grid_direction(), sizes={})
 
     else
         // without media suport
+        float dir
         width grid_columns($medium)
 
 
@@ -152,7 +153,7 @@ grid-offset-h($medium, $small=null, $xsmall=null, dir=null, sizes={})
             if $size != null
                 respond($bp, $size)
     else
-        {$prop}(grid_columns($size))
+        {$prop}(grid_columns($medium))
 
 
 // Shortcuts for `grid-offset-h`
