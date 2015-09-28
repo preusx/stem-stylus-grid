@@ -1,0 +1,152 @@
+/**
+ * Mixins
+ * ======================================================================== */
+
+/**
+ * Return the percentage width specified by the column count.
+ */
+grid_columns(count)
+    grid = grid-settings()
+
+    if count >= 1
+        count = count / grid.columns
+
+    return floor(count * 100%, grid.error)
+
+
+/**
+ * Grid centering.
+ *
+ * responsive [mixed] -
+ *              1) Width - width of the current block,
+ *              2) Array of breakpoints that exists in grid breakpoints
+ *              3) Hash of breakpoints with widhts
+ *              4) Boolean that determine whether block will be responsive
+ */
+grid-center(responsive=null)
+    grid = grid-settings()
+    responsive = grid.responsive if responsive == null
+
+    display block
+    margin-x auto
+    padding-x(grid.gutter / 2)
+
+    if is_unit(responsive) && responsive
+        width: responsive + grid.gutter
+    else if is_hash(responsive)
+        for bp, size in responsive
+            if size == null
+                +media(bp)
+                    width auto
+            else
+                +media(bp)
+                    width: size + grid.gutter
+    else if is_array(responsive) || is_string(responsive)
+        for bp in responsive
+            if grid.container[bp] == null
+                +media(bp)
+                    width auto
+            else
+                +media(bp)
+                    width: grid.container[bp] + grid.gutter
+    else if responsive
+        for bp in ('xs' 'sm' 'md')
+            if grid.container[bp] == null
+                +media(bp)
+                    width auto
+            else
+                +media(bp)
+                    width: grid.container[bp] + grid.gutter
+    else
+        width: grid.width + grid.gutter
+
+
+/**
+ * Grid container.
+ */
+grid-container()
+    grid = grid-settings()
+
+    @extends $clearfix
+
+    display block
+    padding-left 0
+    padding-right 0
+    margin-left: -.5 * grid.gutter
+    margin-right: -.5 * grid.gutter
+
+    list-style none
+
+
+/**
+ * Grid columns.
+ */
+grid-columns(medium, small=null, xsmall=null, dir=grid_direction(), sizes={})
+    grid = grid-settings()
+    $gutter = grid.gutter / 2
+
+    display block
+    min-height 1px
+
+    padding-left $gutter
+    padding-right $gutter
+
+    if grid.responsive
+        respond(bp, size)
+            +media(bp)
+                if size == grid.columns
+                    float none
+                    width auto
+                else if size == 0
+                    display none
+                else
+                    float dir
+                    width grid_columns(size)
+
+        bps = extend(sizes, { xs: xsmall, sm: small, md: medium })
+
+        for bp, size in bps
+            if size != null
+                respond(bp, size)
+
+    else
+        // without media suport
+        float dir
+        width grid_columns(medium)
+
+
+/**
+ * Grid horizontal columns-offset.
+ */
+grid-columns-offset(medium, small=null, xsmall=null, dir=null, sizes={})
+    grid = grid-settings()
+    prop = 'margin-'
+
+    if dir != null
+        dir = dir ? 'left' : 'right'
+        prop += dir
+
+    else
+        prop += 'h'
+
+    if grid.responsive
+        respond(bp, size)
+            +media(bp)
+                {prop}(grid_columns(size))
+
+        bps = extend(sizes, { xs: xsmall, sm: small, md: medium })
+
+        for bp, size in bps
+            if size != null
+                respond(bp, size)
+    else
+        {prop}(grid_columns(medium))
+
+
+// Shortcuts for `grid-columns-offset`
+grid-columns-offset-left(medium, small=null, xsmall=null, sizes={})
+    grid-columns-offset(medium, small, xsmall, true, sizes)
+
+
+grid-columns-offset-right(medium, small=null, xsmall=null, sizes={})
+    grid-columns-offset(medium, small, xsmall, false, sizes)

@@ -1,0 +1,59 @@
+/**
+ * Mixins
+ * ======================================================================== */
+
+/**
+ * Grid offset.
+ */
+grid-offset(size, dir=16, inner=false)
+    prop = inner ? 'padding-' : 'margin-'
+    dir_options = (
+            (1 'top')\
+            (2 'bottom')\
+            (4 'left')\
+            (8 'right')\
+        )
+
+    size = grid_size(size)
+
+    for option in dir_options
+        if byte_and(option[0], dir)
+            {prop + option[1]} size
+
+
+/**
+ * Grid vertical offset.
+ */
+grid-offset-v(size, dir=3, inner=false)
+    if dir != 3
+        dir = dir ? 1 : 2
+
+    grid-offset(size, dir, inner)
+
+
+// Shortcuts for `grid-offset-v`
+grid-offset-top(size, inner=false)
+    grid-offset-v(size, true, inner)
+
+
+grid-offset-bottom(size, inner=false)
+    grid-offset-v(size, false, inner)
+
+
+/**
+ * Grid horizontal offset.
+ */
+grid-offset-h(size, dir=12, inner=false)
+    if dir != 12
+        dir = dir ? 4 : 8
+
+    grid-offset(size, dir, inner)
+
+
+// Shortcuts for `grid-offset-h`
+grid-offset-left(size, inner=false)
+    grid-offset-h(size, true, inner)
+
+
+grid-offset-right(size, inner=false)
+    grid-offset-h(size, false, inner)

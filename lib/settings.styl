@@ -3,8 +3,7 @@
  * ======================================================================== */
 
 block_storage('__stem__grid-settings', {
-        // Horisontal
-        columns:     12,
+        columns:     24,
         gutter:      20px,
         error:       5,
         container:   {
@@ -14,8 +13,18 @@ block_storage('__stem__grid-settings', {
             },
         width:       940px,
 
-        // Vertical
-        baseline:    6px,
+        space:       6px,
+
+        size: {
+            none:    0
+            sm:      2
+            md:      3
+            lg:      5
+            xl:      8
+            giant:   12
+            mega:    18
+            giga:    24
+        }
 
         responsive:  true
     }, true)
@@ -25,7 +34,7 @@ block_storage('__stem__grid-settings', {
  * Mixins
  * ======================================================================== */
 
-grid-settings($data=false, $default=false, fallback=false)
-    $temp = block_storage('__stem__grid-settings', $data, $default, fallback)
+grid-settings(data=false, default=false, fallback=false)
+    temp = block_storage('__stem__grid-settings', data, default, fallback)
 
-    return $temp
+    return temp

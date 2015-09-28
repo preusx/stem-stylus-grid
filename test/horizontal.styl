@@ -84,7 +84,7 @@
 .block{zoom:1}
 .block:after,.block:before{display:block;display:table;width:0;height:0;overflow:hidden;visibility:hidden;content:""}
 .block:after{clear:both}
-.block{display:block;padding-left:0;padding-right:0;margin-left:-20px;margin-right:-20px;list-style:none}
+.block{display:block;padding-left:0;padding-right:0;margin-left:-10px;margin-right:-10px;list-style:none}
 
 
 // @it Grid columns: Integer
@@ -94,7 +94,7 @@
 
 // @expects
 .block{display:block;min-height:1px;padding-left:10px;padding-right:10px}
-@media only screen and (min-width:62em){.block{float:left;width:41.66666%}}
+@media only screen and (min-width:62em){.block{float:left;width:20.83333%}}
 
 
 // @it Grid columns: Float
@@ -113,8 +113,8 @@
     grid-columns(1/5, 3, 5)
 
 // @expects
-.block{display:block;min-height:1px;padding-left:10px;padding-right:10px;float:left;width:41.66666%}
-@media only screen and (min-width:48em){.block{float:left;width:25%}}
+.block{display:block;min-height:1px;padding-left:10px;padding-right:10px;float:left;width:20.83333%}
+@media only screen and (min-width:48em){.block{float:left;width:12.5%}}
 @media only screen and (min-width:62em){.block{float:left;width:20%}}
 
 
@@ -124,7 +124,7 @@
     grid-columns(1/5, 0, 5)
 
 // @expects
-.block{display:block;min-height:1px;padding-left:10px;padding-right:10px;float:left;width:41.66666%}
+.block{display:block;min-height:1px;padding-left:10px;padding-right:10px;float:left;width:20.83333%}
 @media only screen and (min-width:48em){.block{display:none}}
 @media only screen and (min-width:62em){.block{float:left;width:20%}}
 
@@ -135,40 +135,40 @@
     grid-columns(1/5, 0, 5, sizes: {lg: 1/6})
 
 // @expects
-.block{display:block;min-height:1px;padding-left:10px;padding-right:10px;float:left;width:41.66666%}
+.block{display:block;min-height:1px;padding-left:10px;padding-right:10px;float:left;width:20.83333%}
 @media only screen and (min-width:76.5em){.block{float:left;width:16.66666%}}
 @media only screen and (min-width:48em){.block{display:none}}
 @media only screen and (min-width:62em){.block{float:left;width:20%}}
 
 
-// @it Grid offset: horisontal
+// @it Grid columns-offset: horisontal
 
 .block
-    grid-offset-h(1/5, 0, 5)
+    grid-columns-offset(1/5, 0, 5)
 
 // @expects
-.block{margin-left:41.66666%;margin-right:41.66666%}
+.block{margin-left:20.83333%;margin-right:20.83333%}
 @media only screen and (min-width:48em){.block{margin-left:0;margin-right:0}}
 @media only screen and (min-width:62em){.block{margin-left:20%;margin-right:20%}}
 
 
-// @it Grid offset: left
+// @it Grid columns-offset: left
 
 .block
-    grid-offset-left(1/5, 0, 5)
+    grid-columns-offset-left(1/5, 0, 5)
 
 // @expects
-.block{margin-left:41.66666%;}
+.block{margin-left:20.83333%;}
 @media only screen and (min-width:48em){.block{margin-left:0;}}
 @media only screen and (min-width:62em){.block{margin-left:20%;}}
 
 
-// @it Grid offset: right
+// @it Grid columns-offset: right
 
 .block
-    grid-offset-right(1/5, 0, 5)
+    grid-columns-offset-right(1/5, 0, 5)
 
 // @expects
-.block{margin-right:41.66666%;}
+.block{margin-right:20.83333%;}
 @media only screen and (min-width:48em){.block{margin-right:0;}}
 @media only screen and (min-width:62em){.block{margin-right:20%;}}
