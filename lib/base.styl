@@ -6,7 +6,7 @@ grid_direction()
     return DIRECTION == ltr ? unquote('left') : unquote('right')
 
 
-grid_size(size=1)
+grid_size(size=1, lower=false)
     grid = grid-settings()
 
     if is_string(size) || is_ident(size)
@@ -18,4 +18,4 @@ grid_size(size=1)
         px_size = to_px(size)
         r = px_size % grid.space
 
-        return to_unit(px_size - r + (r > 0 ? grid.space : 0) , unit(size))
+        return to_unit(px_size - r + (r > 0 && !lower ? grid.space : 0) , unit(size))
