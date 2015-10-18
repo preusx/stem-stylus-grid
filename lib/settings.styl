@@ -27,14 +27,14 @@ block_storage('__stem__grid-settings', {
         }
 
         responsive:  true
-    }, true)
+    }, default:true)
 
 
 /**
  * Mixins
  * ======================================================================== */
 
-grid-settings(data=false, default=false, fallback=false)
-    temp = block_storage('__stem__grid-settings', data, default, fallback)
+grid-settings(data=false, base=false, fallback=false, default=false)
+    temp = block_storage('__stem__grid-settings', data, base, fallback, default=false)
 
     return temp
