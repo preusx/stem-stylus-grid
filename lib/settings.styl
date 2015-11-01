@@ -3,29 +3,31 @@
  * ======================================================================== */
 
 block_storage('__stem__grid-settings', {
-        columns:     24,
-        gutter:      20px,
-        error:       5,
+        columns:     24
+        gutter:      2rem
+        error:       5
         container:   {
-                n:  null,
-                xs:  Responsive.bp.xs,
-                sm:  Responsive.bp.sm,
-                md:  Responsive.bp.md,
-                lg:  Responsive.bp.lg,
-            },
-        width:       Responsive.bp.lg,
+                n:  null
+                xs:  Responsive.bp.xs
+                sm:  Responsive.bp.sm
+                md:  Responsive.bp.md
+                lg:  Responsive.bp.lg
+            }
+        width:       Responsive.bp.lg
 
-        space:       6px,
+        space:       .25rem
+        scale:       2
 
         size: {
             none:    0
+            xs:      1
             sm:      2
             md:      3
-            lg:      5
-            xl:      8
-            giant:   12
-            mega:    18
-            giga:    24
+            lg:      4
+            xl:      5
+            giant:   6
+            mega:    7
+            giga:    8
         }
 
         respond:     ('n' 'xs' 'sm' 'md' 'lg')

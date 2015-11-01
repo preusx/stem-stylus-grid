@@ -13,9 +13,9 @@ grid_size(size=1, lower=false)
         size = grid.size[size]
 
     if unit(size) == ''
-        return size * grid.space
+        return scale_modular(grid.space, size, grid.scale)
     else
-        px_size = to_px(size)
-        r = px_size % grid.space
-
-        return to_unit(px_size - r + (r > 0 && !lower ? grid.space : 0) , unit(size))
+        size = to_unit(size, unit(grid.space))
+        return scale_modular(grid.space,
+            scale_modular_reverse(grid.space, size, grid.scale, cb:round),
+            grid.scale)

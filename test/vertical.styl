@@ -7,17 +7,18 @@ for $i in (2 4 6 8 18px 24px 30px 40px sm 'md' mega)
         height grid_size($i)
 
 // @expects
-.block2{height:12px}
-.block4{height:24px}
-.block6{height:36px}
-.block8{height:48px}
-.block18{height:18px}
-.block24{height:24px}
-.block30{height:30px}
-.block40{height:42px}
-.blocksm{height:12px}
-.blockmd{height:18px}
-.blockmega{height:108px}
+
+.block2{height:.5rem}
+.block4{height:2rem}
+.block6{height:8rem}
+.block8{height:32rem}
+.block18{height:1rem}
+.block24{height:2rem}
+.block30{height:2rem}
+.block40{height:2rem}
+.blocksm{height:.5rem}
+.blockmd{height:1rem}
+.blockmega{height:16rem}
 
 
 // @it Grid offset vertical
@@ -28,7 +29,7 @@ for $i in (2 4 6 8 18px 24px 30px 40px sm 'md' mega)
     grid-offset-bottom 30px
 
 // @expects
-.block{margin-top:12px;margin-bottom:12px;margin-top:24px;margin-bottom:30px}
+.block{margin-top:.5rem;margin-bottom:.5rem;margin-top:1rem;margin-bottom:2rem}
 
 
 // @it Grid offset vertical inner
@@ -39,7 +40,7 @@ for $i in (2 4 6 8 18px 24px 30px 40px sm 'md' mega)
     grid-offset-bottom(30px, inner:true)
 
 // @expects
-.block{padding-top:12px;padding-bottom:12px;padding-top:24px;padding-bottom:30px}
+.block{padding-top:.5rem;padding-bottom:.5rem;padding-top:1rem;padding-bottom:2rem}
 
 
 // @it Grid vertical border
@@ -50,6 +51,7 @@ for $i in 1..3
         grid-border 1px, $i
 
 // @expects
-.block1{margin-top:12px;margin-bottom:12px;margin-top:11px}
-.block2{margin-top:12px;margin-bottom:12px;margin-bottom:11px}
-.block3{margin-top:12px;margin-bottom:12px;margin-top:11px;margin-bottom:11px}
+
+.block1{margin-top:.5rem;margin-bottom:.5rem;margin-top:.4375rem}
+.block2{margin-top:.5rem;margin-bottom:.5rem;margin-bottom:.4375rem}
+.block3{margin-top:.5rem;margin-bottom:.5rem;margin-top:.4375rem;margin-bottom:.4375rem}
