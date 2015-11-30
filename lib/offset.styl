@@ -5,7 +5,7 @@
 /**
  * Grid offset.
  */
-grid-offset(size, dir=16, inner=false)
+g-offset(size, dir=16, inner=false)
     prop = inner ? 'padding-' : 'margin-'
     dir_options = (
             (1 'top')\
@@ -17,43 +17,43 @@ grid-offset(size, dir=16, inner=false)
     size = grid_size(size)
 
     for option in dir_options
-        if byte_and(option[0], dir)
+        if byte-and(option[0], dir)
             {prop + option[1]} size
 
 
 /**
  * Grid vertical offset.
  */
-grid-offset-v(size, dir=3, inner=false)
+g-offset-v(size, dir=3, inner=false)
     if dir != 3
         dir = dir ? 1 : 2
 
-    grid-offset(size, dir, inner)
+    g-offset(size, dir, inner)
 
 
-// Shortcuts for `grid-offset-v`
-grid-offset-top(size, inner=false)
-    grid-offset-v(size, true, inner)
+// Shortcuts for `g-offset-v`
+g-offset-top(size, inner=false)
+    g-offset-v(size, true, inner)
 
 
-grid-offset-bottom(size, inner=false)
-    grid-offset-v(size, false, inner)
+g-offset-bottom(size, inner=false)
+    g-offset-v(size, false, inner)
 
 
 /**
  * Grid horizontal offset.
  */
-grid-offset-h(size, dir=12, inner=false)
+g-offset-h(size, dir=12, inner=false)
     if dir != 12
         dir = dir ? 4 : 8
 
-    grid-offset(size, dir, inner)
+    g-offset(size, dir, inner)
 
 
-// Shortcuts for `grid-offset-h`
-grid-offset-left(size, inner=false)
-    grid-offset-h(size, true, inner)
+// Shortcuts for `g-offset-h`
+g-offset-left(size, inner=false)
+    g-offset-h(size, true, inner)
 
 
-grid-offset-right(size, inner=false)
-    grid-offset-h(size, false, inner)
+g-offset-right(size, inner=false)
+    g-offset-h(size, false, inner)

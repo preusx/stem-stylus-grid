@@ -11,18 +11,18 @@
  * @param {boolean} [dir]   - Border vertical position: 1 - top, 2 - bottom,
  *                             3 - both
  */
-grid-border(width, dir=null)
-    width = to_px(width)
-    mt = at_partial('margin-top')
-    mb = at_partial('margin-bottom')
+g-border(width, dir=null)
+    width = to-px(width)
+    mt = prop-partial('margin-top')
+    mb = prop-partial('margin-bottom')
 
-    if byte_and(dir, 1) // top
-        margin-top to_unit(to_px(mt) - width, unit(mt))
-    if byte_and(dir, 2) // bottom
-        margin-bottom to_unit(to_px(mb) - width, unit(mb))
+    if byte-and(dir, 1) // top
+        margin-top to-unit(to-px(mt) - width, unit(mt))
+    if byte-and(dir, 2) // bottom
+        margin-bottom to-unit(to-px(mb) - width, unit(mb))
 
-    // $pt = at_partial('padding-top') unless mt
-    // $pb = at_partial('padding-bottom') unless mb
+    // $pt = prop-partial('padding-top') unless mt
+    // $pb = prop-partial('padding-bottom') unless mb
 
     // if dir & 1 // top
     //     {mt ? 'margin' : 'padding'}-top (mt ? mt : $pt) - width
@@ -30,47 +30,45 @@ grid-border(width, dir=null)
     //     {mb ? 'margin' : 'padding'}-bottom (mb ? mb : $pb) - width
 
 
-grid-border-v(width, style, color)
-    grid-border(width, 3)
+g-border-v(width, style, color)
+    g-border(width, 3)
 
     border-top width style color
     border-bottom width style color
 
 
-grid-border-v-width(width)
-    grid-border(width, 3)
+g-border-v-width(width)
+    g-border(width, 3)
 
     border-top-width width
     border-bottom-width width
 
 
-grid-border-top(width, style, color)
-    grid-border(width, 1)
+g-border-top(width, style, color)
+    g-border(width, 1)
 
     border-top width style color
 
 
-grid-border-top-width(width, style, color)
-    grid-border(width, 1)
+g-border-top-width(width, style, color)
+    g-border(width, 1)
 
     border-top-width width
 
 
-grid-border-bottom(width, style, color)
-    grid-border(width, 2)
+g-border-bottom(width, style, color)
+    g-border(width, 2)
 
     border-bottom width style color
 
-// Alias for: grid-border-bottom
-grid-border-bot(width, style, color)
-    grid-border-bottom(width, style, color)
+// Alias for: g-border-bottom
+g-border-bot(width, style, color) = g-border-bottom
 
 
-grid-border-bottom-width(width)
-    grid-border(width, 2)
+g-border-bottom-width(width)
+    g-border(width, 2)
 
     border-bottom-width width
 
-// Alias for: grid-border-bottom-width
-grid-border-bot-width(width)
-    grid-border-bottom-width(width)
+// Alias for: g-border-bottom-width
+g-border-bot-width = g-border-bottom-width

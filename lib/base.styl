@@ -7,15 +7,13 @@ grid_direction()
 
 
 grid_size(size=1, lower=false)
-    grid = grid-settings()
-
-    if is_string(size) || is_ident(size)
-        size = grid.size[size]
+    if is-string(size) || is-ident(size)
+        size = Space.size[size]
 
     if unit(size) == ''
-        return scale_modular(grid.space, size, grid.scale)
+        return scale-modular(Space.base, size, Space.scale)
     else
-        size = to_unit(size, unit(grid.space))
-        return scale_modular(grid.space,
-            scale_modular_reverse(grid.space, size, grid.scale, cb:round),
-            grid.scale)
+        size = to-unit(size, unit(Space.base))
+        return scale-modular(Space.base,
+            scale-modular_reverse(Space.base, size, Space.scale, true),
+            Space.scale)

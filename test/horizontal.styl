@@ -3,7 +3,7 @@
 // @it Grid center: Empty
 
 .block
-    grid-center()
+    g-center()
 
 // @expects
 .block{display:block;margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem}
@@ -17,7 +17,7 @@
 // @it Grid center: Width
 
 .block
-    grid-center(100px)
+    g-center(100px)
 
 // @expects
 .block{display:block;margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem;width:100px}
@@ -26,11 +26,11 @@
 // @it Grid center: String
 
 .block
-    grid-center('md')
+    g-center('md')
 
 
 .block2
-    grid-center(('md'))
+    g-center(('md'))
 
 // @expects
 .block{display:block;margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem;width:720px}
@@ -40,7 +40,7 @@
 // @it Grid center: Array
 
 .block
-    grid-center(('sm' 'md'))
+    g-center(('sm' 'md'))
 
 // @expects
 .block{display:block;margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem}
@@ -51,7 +51,7 @@
 // @it Grid center: Hash
 
 .block
-    grid-center({sm: 1px, md: 15px})
+    g-center({sm: 1px, md: 15px})
 
 // @expects
 .block{display:block;margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem}
@@ -62,7 +62,7 @@
 // @it Grid container
 
 .block
-    grid-container()
+    g-container()
 
 // @expects
 .block{zoom:1}
@@ -74,7 +74,7 @@
 // @it Grid columns: Integer
 
 .block
-    grid-columns(5)
+    g-columns(5)
 
 // @expects
 .block{display:block;min-height:1px;padding-left:1rem;padding-right:1rem;float:left;width:20.83333%}
@@ -83,7 +83,7 @@
 // @it Grid columns: Float
 
 .block
-    grid-columns(1/5)
+    g-columns(1/5)
 
 // @expects
 .block{display:block;min-height:1px;padding-left:1rem;padding-right:1rem;float:left;width:20%}
@@ -92,7 +92,7 @@
 // @it Grid columns: Other respond
 
 .block
-    grid-columns((1/5 3 5 4))
+    g-columns((1/5 3 5 4))
 
 // @expects
 .block{display:block;min-height:1px;padding-left:1rem;padding-right:1rem}
@@ -105,7 +105,7 @@
 // @it Grid columns: Hide on small
 
 .block
-    grid-columns((1/5 0 5))
+    g-columns((1/5 0 5))
 
 // @expects
 .block{display:block;min-height:1px;padding-left:1rem;padding-right:1rem}
@@ -117,7 +117,7 @@
 // @it Grid columns: Custom breakpoints
 
 .block
-    grid-columns({lg: 1/6, md: 1/3})
+    g-columns({lg: 1/6, md: 1/3})
 
 // @expects
 .block{display:block;min-height:1px;padding-left:1rem;padding-right:1rem}
@@ -128,7 +128,7 @@
 // @it Grid columns-offset: horisontal
 
 .block
-    grid-columns-offset((1/5 0 5))
+    g-columns-offset((1/5 0 5))
 
 // @expects
 @media only screen{.block{margin-left:20.83333%;margin-right:20.83333%}}
@@ -139,7 +139,7 @@
 // @it Grid columns-offset: left
 
 .block
-    grid-columns-offset-left((1/5 0 5))
+    g-columns-offset-left((1/5 0 5))
 
 // @expects
 @media only screen{.block{margin-left:20.83333%}}
@@ -150,7 +150,7 @@
 // @it Grid columns-offset: right
 
 .block
-    grid-columns-offset-right((1/5 0 5))
+    g-columns-offset-right((1/5 0 5))
 
 // @expects
 @media only screen{.block{margin-right:20.83333%}}

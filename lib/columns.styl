@@ -2,27 +2,25 @@
  * Mixins
  * ======================================================================== */
 
-grid-respond(sizes, callback)
-    grid = grid-settings()
-
-    if grid.responsive
-        if is_hash(sizes)
+g-respond(sizes, callback)
+    if Grid.responsive
+        if is-hash(sizes)
             for bp, size in sizes
                 if size != null
                     +above(bp)
                         callback(bp, size)
 
-        if is_list(sizes)
+        if is-list(sizes)
             i = length(sizes)
 
-            for bp in grid.respond
+            for bp in Grid.respond
                 i -= 1
 
                 if sizes[i] != null && sizes[i] != '_' && i >= 0
                     +above(bp)
                         callback(bp, sizes[i])
 
-    if is_unit(sizes)
+    if is-unit(sizes)
         callback(bp, sizes)
 
 
@@ -30,12 +28,10 @@ grid-respond(sizes, callback)
  * Return the percentage width specified by the column count.
  */
 grid_columns(count)
-    grid = grid-settings()
-
     if count >= 1
-        count = count / grid.columns
+        count = count / Grid.columns
 
-    return floor(count * 100%, grid.error)
+    return floor(count * 100%, Grid.error)
 
 
 /**
@@ -47,19 +43,18 @@ grid_columns(count)
  *              3) Hash of breakpoints with widhts
  *              4) Boolean that determine whether block will be responsive
  */
-grid-center(respond=null)
-    grid = grid-settings()
-    respond = grid.respond if respond == null
+g-center(respond=null)
+    respond = Grid.respond if respond == null
 
     display block
     margin-x auto
-    padding-x(grid.gutter / 2)
+    padding-x(Grid.gutter / 2)
 
-    if is_unit(respond) && respond
+    if is-unit(respond) && respond
         width: respond
-    else if is_string(respond) && respond
-        width: grid.container[respond]
-    else if is_hash(respond)
+    else if is-string(respond) && respond
+        width: Grid.container[respond]
+    else if is-hash(respond)
         for bp, size in respond
             if size == null
                 +above(bp)
@@ -67,31 +62,31 @@ grid-center(respond=null)
             else
                 +above(bp)
                     width: size
-    else if is_list(respond)
+    else if is-list(respond)
         for bp in respond
-            if grid.container[bp] == null
+            if Grid.container[bp] == null
                 +above(bp)
                     width auto
             else
                 +above(bp)
-                    width: grid.container[bp]
+                    width: Grid.container[bp]
     else
-        width: grid.width
+        width: Grid.width
 
 
 /**
  * Grid container.
  */
-grid-container()
-    grid = grid-settings()
+g-container()
+    grid = g-settings()
 
     @extends $clearfix
 
     display block
     padding-left 0
     padding-right 0
-    margin-left: -.5 * grid.gutter
-    margin-right: -.5 * grid.gutter
+    margin-left: -.5 * Grid.gutter
+    margin-right: -.5 * Grid.gutter
 
     list-style none
 
@@ -99,10 +94,10 @@ grid-container()
 /**
  * Grid columns.
  */
-grid-columns(sizes, dir=grid_direction())
-    grid = grid-settings()
+g-columns(sizes, dir=grid_direction())
+    grid = g-settings()
 
-    $gutter = grid.gutter / 2
+    $gutter = Grid.gutter / 2
 
     display block
     min-height 1px
@@ -110,8 +105,8 @@ grid-columns(sizes, dir=grid_direction())
     padding-left $gutter
     padding-right $gutter
 
-    grid-respond(sizes, @(bp, size) {
-        if (size == grid.columns) {
+    g-respond(sizes, @(bp, size) {
+        if (size == Grid.columns) {
             float none
             width auto
         } else if (size == 0) {
@@ -126,8 +121,8 @@ grid-columns(sizes, dir=grid_direction())
 /**
  * Grid horizontal columns-offset.
  */
-grid-columns-offset(sizes, dir=null)
-    grid = grid-settings()
+g-columns-offset(sizes, dir=null)
+    grid = g-settings()
     prop = 'margin-'
 
     if dir != null
@@ -137,15 +132,15 @@ grid-columns-offset(sizes, dir=null)
     else
         prop += 'h'
 
-    grid-respond(sizes, @(bp, size) {
+    g-respond(sizes, @(bp, size) {
         {prop}(grid_columns(size))
     })
 
 
-// Shortcuts for `grid-columns-offset`
-grid-columns-offset-left(sizes)
-    grid-columns-offset(sizes, true)
+// Shortcuts for `g-columns-offset`
+g-columns-offset-left(sizes)
+    g-columns-offset(sizes, true)
 
 
-grid-columns-offset-right(sizes)
-    grid-columns-offset(sizes, false)
+g-columns-offset-right(sizes)
+    g-columns-offset(sizes, false)

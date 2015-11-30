@@ -2,21 +2,9 @@
  * Variables
  * ======================================================================== */
 
-block_storage('__stem__grid-settings', {
-        columns:     24
-        gutter:      2rem
-        error:       5
-        container:   {
-                n:  null
-                xs:  Responsive.bp.xs
-                sm:  Responsive.bp.sm
-                md:  Responsive.bp.md
-                lg:  Responsive.bp.lg
-            }
-        width:       Responsive.bp.lg
-
-        space:       .25rem
-        scale:       2
+Space = extend({
+        base: .25rem
+        scale: 2
 
         size: {
             none:    0
@@ -29,17 +17,25 @@ block_storage('__stem__grid-settings', {
             mega:    7
             giga:    8
         }
+    }, Space)
+
+
+$bp = responsive-breakpoints()
+
+Grid = extend({
+        columns:     24
+        gutter:      2rem
+        error:       5
+        container:   {
+                n:  null
+                xs:  $bp.xs
+                sm:  $bp.sm
+                md:  $bp.md
+                lg:  $bp.lg
+            }
+
+        width:       $bp.lg
 
         respond:     ('n' 'xs' 'sm' 'md' 'lg')
         responsive:  true
-    }, default:true)
-
-
-/**
- * Mixins
- * ======================================================================== */
-
-grid-settings(data=false, base=false, fallback=false, default=false)
-    temp = block_storage('__stem__grid-settings', data, base, fallback, default=false)
-
-    return temp
+    }, Grid)
