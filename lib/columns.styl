@@ -47,8 +47,8 @@ g-center(respond=null)
     respond = Grid.respond if respond == null
 
     display block
-    margin-x auto
-    padding-x(Grid.gutter / 2)
+    mh: auto
+    ph: (Grid.gutter / 2)
 
     if is-unit(respond) && respond
         width: respond
@@ -78,15 +78,11 @@ g-center(respond=null)
  * Grid container.
  */
 g-container()
-    grid = g-settings()
-
     @extends $clearfix
 
     display block
-    padding-left 0
-    padding-right 0
-    margin-left: -.5 * Grid.gutter
-    margin-right: -.5 * Grid.gutter
+    ph: 0
+    mh: -.5 * Grid.gutter
 
     list-style none
 
@@ -95,15 +91,12 @@ g-container()
  * Grid columns.
  */
 g-columns(sizes, dir=grid_direction())
-    grid = g-settings()
-
     $gutter = Grid.gutter / 2
 
     display block
     min-height 1px
 
-    padding-left $gutter
-    padding-right $gutter
+    ph: $gutter
 
     g-respond(sizes, @(bp, size) {
         if (size == Grid.columns) {
@@ -122,7 +115,6 @@ g-columns(sizes, dir=grid_direction())
  * Grid horizontal columns-offset.
  */
 g-columns-offset(sizes, dir=null)
-    grid = g-settings()
     prop = 'margin-'
 
     if dir != null

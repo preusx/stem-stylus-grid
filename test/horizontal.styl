@@ -6,12 +6,11 @@
     g-center()
 
 // @expects
-.block{display:block;margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem}
-@media only screen{.block{width:auto}}
-@media only screen and (min-width:320px){.block{width:320px}}
-@media only screen and (min-width:480px){.block{width:480px}}
-@media only screen and (min-width:720px){.block{width:720px}}
-@media only screen and (min-width:960px){.block{width:960px}}
+.block{display:block;margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem;width:auto}
+@media (min-width:320px){.block{width:320px}}
+@media (min-width:480px){.block{width:480px}}
+@media (min-width:720px){.block{width:720px}}
+@media (min-width:960px){.block{width:960px}}
 
 
 // @it Grid center: Width
@@ -44,8 +43,8 @@
 
 // @expects
 .block{display:block;margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem}
-@media only screen and (min-width:480px){.block{width:480px}}
-@media only screen and (min-width:720px){.block{width:720px}}
+@media (min-width:480px){.block{width:480px}}
+@media (min-width:720px){.block{width:720px}}
 
 
 // @it Grid center: Hash
@@ -55,8 +54,8 @@
 
 // @expects
 .block{display:block;margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem}
-@media only screen and (min-width:480px){.block{width:1px}}
-@media only screen and (min-width:720px){.block{width:15px}}
+@media (min-width:480px){.block{width:1px}}
+@media (min-width:720px){.block{width:15px}}
 
 
 // @it Grid container
@@ -65,10 +64,9 @@
     g-container()
 
 // @expects
-.block{zoom:1}
 .block:after,.block:before{display:block;display:table;width:0;height:0;overflow:hidden;visibility:hidden;content:""}
-.block:after{clear:both}
-.block{display:block;padding-left:0;padding-right:0;margin-left:-1rem;margin-right:-1rem;list-style:none}
+    .block{zoom:1}
+        .block:after{clear:both}.block{display:block;padding-left:0;padding-right:0;margin-left:-1rem;margin-right:-1rem;list-style:none}
 
 
 // @it Grid columns: Integer
@@ -95,11 +93,10 @@
     g-columns((1/5 3 5 4))
 
 // @expects
-.block{display:block;min-height:1px;padding-left:1rem;padding-right:1rem}
-@media only screen{.block{float:left;width:16.66666%}}
-@media only screen and (min-width:320px){.block{float:left;width:20.83333%}}
-@media only screen and (min-width:480px){.block{float:left;width:12.5%}}
-@media only screen and (min-width:720px){.block{float:left;width:20%}}
+.block{display:block;min-height:1px;padding-left:1rem;padding-right:1rem;float:left;width:16.66666%}
+@media (min-width:320px){.block{float:left;width:20.83333%}}
+@media (min-width:480px){.block{float:left;width:12.5%}}
+@media (min-width:720px){.block{float:left;width:20%}}
 
 
 // @it Grid columns: Hide on small
@@ -108,10 +105,9 @@
     g-columns((1/5 0 5))
 
 // @expects
-.block{display:block;min-height:1px;padding-left:1rem;padding-right:1rem}
-@media only screen{.block{float:left;width:20.83333%}}
-@media only screen and (min-width:320px){.block{display:none}}
-@media only screen and (min-width:480px){.block{float:left;width:20%}}
+.block{display:block;min-height:1px;padding-left:1rem;padding-right:1rem;float:left;width:20.83333%}
+@media (min-width:320px){.block{display:none}}
+@media (min-width:480px){.block{float:left;width:20%}}
 
 
 // @it Grid columns: Custom breakpoints
@@ -121,8 +117,8 @@
 
 // @expects
 .block{display:block;min-height:1px;padding-left:1rem;padding-right:1rem}
-@media only screen and (min-width:960px){.block{float:left;width:16.66666%}}
-@media only screen and (min-width:720px){.block{float:left;width:33.33333%}}
+@media (min-width:960px){.block{float:left;width:16.66666%}}
+@media (min-width:720px){.block{float:left;width:33.33333%}}
 
 
 // @it Grid columns-offset: horisontal
@@ -131,9 +127,9 @@
     g-columns-offset((1/5 0 5))
 
 // @expects
-@media only screen{.block{margin-left:20.83333%;margin-right:20.83333%}}
-@media only screen and (min-width:320px){.block{margin-left:0;margin-right:0}}
-@media only screen and (min-width:480px){.block{margin-left:20%;margin-right:20%}}
+.block{margin-left:20.83333%;margin-right:20.83333%}
+@media (min-width:320px){.block{margin-left:0;margin-right:0}}
+@media (min-width:480px){.block{margin-left:20%;margin-right:20%}}
 
 
 // @it Grid columns-offset: left
@@ -142,9 +138,9 @@
     g-columns-offset-left((1/5 0 5))
 
 // @expects
-@media only screen{.block{margin-left:20.83333%}}
-@media only screen and (min-width:320px){.block{margin-left:0}}
-@media only screen and (min-width:480px){.block{margin-left:20%}}
+.block{margin-left:20.83333%}
+@media (min-width:320px){.block{margin-left:0}}
+@media (min-width:480px){.block{margin-left:20%}}
 
 
 // @it Grid columns-offset: right
@@ -153,6 +149,6 @@
     g-columns-offset-right((1/5 0 5))
 
 // @expects
-@media only screen{.block{margin-right:20.83333%}}
-@media only screen and (min-width:320px){.block{margin-right:0}}
-@media only screen and (min-width:480px){.block{margin-right:20%}}
+.block{margin-right:20.83333%}
+@media (min-width:320px){.block{margin-right:0}}
+@media (min-width:480px){.block{margin-right:20%}}
