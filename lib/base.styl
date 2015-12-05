@@ -4,16 +4,3 @@
 
 grid_direction()
     return DIRECTION == ltr ? unquote('left') : unquote('right')
-
-
-grid_size(size=1, lower=false)
-    if is-string(size) || is-ident(size)
-        size = Space.size[size]
-
-    if unit(size) == ''
-        return scale-modular(Space.base, size, Space.scale)
-    else
-        size = to-unit(size, unit(Space.base))
-        return scale-modular(Space.base,
-            scale-modular_reverse(Space.base, size, Space.scale, true),
-            Space.scale)

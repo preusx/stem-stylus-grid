@@ -14,7 +14,7 @@ g-offset(size, dir=16, inner=false)
             (8 'right')\
         )
 
-    size = grid_size(size)
+    size = g-space(size)
 
     for option in dir_options
         if byte-and(option[0], dir)

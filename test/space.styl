@@ -1,0 +1,50 @@
+// @describe Grid space
+
+// @it Grid space
+
+for $i in (2 4 6 8 18px 24px 30px 40px sm 'md' mega)
+    .block{$i}
+        height g-space($i)
+
+// @expects
+
+.block2{height:.5rem}
+.block4{height:2rem}
+.block6{height:8rem}
+.block8{height:32rem}
+.block18{height:1rem}
+.block24{height:2rem}
+.block30{height:2rem}
+.block40{height:2rem}
+.blocksm{height:.5rem}
+.blockmd{height:1rem}
+.blockmega{height:16rem}
+
+
+// @it Grid offset
+
+.block
+    g-offset-v 10px
+    g-offset-top 20px
+    g-offset-bottom 30px
+    g-offset-h 10px
+    g-offset-left 20px
+    g-offset-right 30px
+
+// @expects
+.block{margin-top:.5rem;margin-bottom:.5rem;margin-top:1rem;margin-bottom:2rem;margin-left:.5rem;margin-right:.5rem;margin-left:1rem;margin-right:2rem}
+
+
+// @it Grid offset inner
+
+.block
+    g-offset-v(10px, inner:true)
+    g-offset-top(20px, inner:true)
+    g-offset-bottom(30px, inner:true)
+    g-offset-h(10px, inner:true)
+    g-offset-left(20px, inner:true)
+    g-offset-right(30px, inner:true)
+
+// @expects
+.block{padding-top:.5rem;padding-bottom:.5rem;padding-top:1rem;padding-bottom:2rem;padding-left:.5rem;padding-right:.5rem;padding-left:1rem;padding-right:2rem}
+
