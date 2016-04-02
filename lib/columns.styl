@@ -78,7 +78,7 @@ g-center(respond=null)
  * Grid container.
  */
 g-container()
-    @extends $clearfix
+    clear fix
 
     display block
     ph: 0
@@ -100,11 +100,13 @@ g-columns(sizes, dir=grid_direction())
 
     g-respond(sizes, @(bp, size) {
         if (size == Grid.columns) {
+            display block
             float none
-            width auto
+            width 100%
         } else if (size == 0) {
             display none
         } else {
+            display block
             float dir
             width grid_columns(size)
         }
